@@ -12,3 +12,4 @@ function IndexMain(props) {
 }
 
 export default IndexMain;
+
