@@ -1,6 +1,8 @@
 import { css } from "@emotion/react";
 
-export const layout = css `
+export const layout = css`
+    display: flex;
+    flex-direction: column;
     box-sizing: border-box;
     border: 1px solid #dbdbdb;
     border-radius: 8px;

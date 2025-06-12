@@ -27,6 +27,7 @@ export const searchButton = css`
     cursor: pointer;
 `;
 
+
 export const filterContainer = css`
     display: flex;
     justify-content: end;
