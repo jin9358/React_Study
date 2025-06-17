@@ -3,6 +3,8 @@ import * as s from './styles';
 import React, { useEffect, useState, useTransition } from 'react';
 import { MdOutlineCheckCircle, MdOutlineErrorOutline } from 'react-icons/md';
 import { IoEye, IoEyeOff } from 'react-icons/io5';
+import axios from 'axios';
+import { useNavigate } from 'react-router-dom';
 
 
 /**
@@ -41,8 +43,9 @@ function useSignInAndUpInput({ id, type, name, placeholder, value, valid }) {
     }
 
     return {
-        inputValue,
-        status,
+        name: name,
+        value: inputValue,
+        status: status,
         element: <SignInAndUpInput 
             key={id}
             type={type} 
@@ -109,6 +112,7 @@ function InputValidatedMessage({status, message}) {
 }
 
 function Signup(props) {
+    const navigate = useNavigate();
     const [ submitDisabled, setSubmitDisabled ] = useState(true);
     const inputs = [
         {
@@ -181,6 +185,34 @@ function Signup(props) {
         setSubmitDisabled(!!inputItems.find(inputItem => inputItem.status !== "success"))
     }, [inputItems])
 
+    const handleRegisterOnClick = async () => {
+        const url = "http://localhost:8080/api/users";
+
+        let data = {};
+        inputItems.forEach(inputItem => {
+            data = {
+                ...data,
+                [inputItem.name]: inputItem.value,
+            }
+        });
+
+        try {
+            const response = await axios.post(url, data);
+            alert("사용자등록 완료");
+
+            navigate("/users/signin", 
+                {state: {
+                    username: response.data.username,
+                    password: inputItems.find(inputItem => inputItem.name === "password").value,
+                }
+            });
+
+        } catch(error) {
+            alert("사용자 등록 오류");
+        }
+
+    }
+
     return (
         <div css={s.layout}>
             <div css={s.container}>
@@ -189,7 +221,7 @@ function Signup(props) {
                     inputItems.map(inputItem => inputItem.element)
                 }
             </div>
-            <button css={s.submitButton} disabled={submitDisabled}>가입하기</button>
+            <button css={s.submitButton} disabled={submitDisabled} onClick={handleRegisterOnClick}>가입하기</button>
         </div>
     );
 }
