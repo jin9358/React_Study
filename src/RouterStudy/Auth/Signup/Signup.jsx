@@ -135,8 +135,8 @@ function Signup(props) {
             value: "",
             valid: {
                 enabled: true,
-                regex: /^(?=.*[a-z])(?=.*\d).{4,20}$/,
-                message: "아이디는 영문, 숫자를 포함 4~20자여야 합니다.",
+                regex: /^(?=.*[A-Za-z])(?=.*\d)(?=.*[~!@#$%^&*()_+\-=\[\]{};':"\\|,.<>/?]).{8,20}$/,
+                message: "비밀번호는 8~20자이며, 영문·숫자·특수문자를 모두 포함해야 합니다.",
             },
         },
         {
@@ -186,7 +186,7 @@ function Signup(props) {
     }, [inputItems])
 
     const handleRegisterOnClick = async () => {
-        const url = "http://localhost:8080/api/users";
+        const url = "http://localhost:8080/api/members";
 
         let data = {};
         inputItems.forEach(inputItem => {
