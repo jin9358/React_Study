@@ -1,6 +1,6 @@
 /** @jsxImportSource @emotion/react */
 import * as s from './styles';
-import React, { useEffect, useState, useTransition } from 'react';
+import { useEffect, useState } from 'react';
 import { MdOutlineCheckCircle, MdOutlineErrorOutline } from 'react-icons/md';
 import { IoEye, IoEyeOff } from 'react-icons/io5';
 import axios from 'axios';
@@ -85,19 +85,19 @@ function SignInAndUpInput({type, name, placeholder, value, onChange, onBlur, sta
 
 function usePasswordInputHiddenButton() {
     const [isShow, setShow] = useState(false);
-    
+
     const handleOnClick = () => {
         setShow(prev => !prev);
     }
 
     return {
         isShow,
-        element: <PasswordInputHiddenButton isShow={isShow} onClick={handleOnClick}/>
+        element: <PasswordInputHiddenButton isShow={isShow} onClick={handleOnClick} />
     }
 }
 
 
-function PasswordInputHiddenButton(isShow, onClick) {
+function PasswordInputHiddenButton({isShow, onClick}) {
     return <p onClick={onClick}>{isShow ? <IoEyeOff /> : <IoEye />}</p>
 }
 
@@ -146,7 +146,7 @@ function Signup(props) {
             placeholder: "비밀번호 확인",
             value: "",
             valid: {
-                enabled: false,     // 정규식으로 검사할거냐? -> true or false
+                enabled: false,
                 regex: null,
                 callback: () => inputItems[1].inputValue === inputItems[2].inputValue,
                 message: "비밀번호가 서로 일치하지 않습니다.",
@@ -179,16 +179,17 @@ function Signup(props) {
     ];
 
     const inputItems = inputs.map(input => useSignInAndUpInput(input));
-    //ex) [input, input] -> [useSignInAndUpInput(리턴값), useSignInAndUpInput(리턴값)]
+    // [input, input] -> [useSignInAndUpInput(리턴값), useSignInAndUpInput(리턴값)]
 
     useEffect(() => {
         setSubmitDisabled(!!inputItems.find(inputItem => inputItem.status !== "success"))
-    }, [inputItems])
+    }, [inputItems]);
 
     const handleRegisterOnClick = async () => {
-        const url = "http://localhost:8080/api/members";
+        const url = "http://localhost:8080/api/users";
 
         let data = {};
+
         inputItems.forEach(inputItem => {
             data = {
                 ...data,
@@ -198,11 +199,11 @@ function Signup(props) {
 
         try {
             const response = await axios.post(url, data);
-            alert("사용자등록 완료");
+            alert("사용자 등록 완료");
 
-            navigate("/users/signin", 
-                {state: {
-                    username: response.data.username,
+            navigate("/users/signin", {
+                state: {
+                    username: response.data.username, 
                     password: inputItems.find(inputItem => inputItem.name === "password").value,
                 }
             });
@@ -210,7 +211,7 @@ function Signup(props) {
         } catch(error) {
             alert("사용자 등록 오류");
         }
-
+        
     }
 
     return (
