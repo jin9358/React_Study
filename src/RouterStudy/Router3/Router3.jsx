@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import { Link, Navigate, Route, Routes, useLocation, useNavigate } from 'react-router-dom';
+import { Link, Route, Routes, useLocation, useNavigate } from 'react-router-dom';
 
 /**
  * 경로(path) 관리
@@ -8,18 +8,17 @@ import { Link, Navigate, Route, Routes, useLocation, useNavigate } from 'react-r
 function Router3(props) {
     const location = useLocation();
     const navigate = useNavigate();
-    
 
     useEffect(() => {
-        console.log("경로이동함!!!");
-        console.log(location.pathname); // 현재 경로
+        console.log("경로이동함!!");
+        console.log(location.pathname); //현재 경로
         if (location.pathname === "/location/2") {
             navigate("/location/3", {
                 state: {
                     name: "이진혁",
-                    age: 32,    
+                    age: 28,
                 }
-            })
+            });
         }
     }, [location.pathname]);
 
@@ -29,15 +28,13 @@ function Router3(props) {
         console.log(decodeURI(location.search));
     }, [location.search]);
 
-
-    useEffect (() => {
+    useEffect(() => {
         console.log(location.state)
     }, [location.state]);
 
-    const handleBackonClick = () => {
-        navigate(-1);   // redirect가 아니기 때문에 상태 유지도 됨
+    const handleBackOnClick = () => {
+        navigate(-1);
     }
-    console.log(navigate);
 
     return (
         <div>
@@ -46,11 +43,11 @@ function Router3(props) {
             <Link to={"/location/3"} >location3-1</Link>
             <Link to={"/location/3?name=이진혁"} >location3-2</Link>
             <Link to={"/location/3?name=이진혁2"} >location3-3</Link>
-            <button onClick={handleBackonClick}>뒤로가기</button>
+            <button onClick={handleBackOnClick}>뒤로가기</button>
             <Routes>
-                <Route path='/location/1' element={<h1>Location1</h1>}/>
-                <Route path='/location/2' element={<h1>Location2</h1>}/>
-                <Route path='/location/3' element={<h1>Location3</h1>}/>
+                <Route path='/location/1' element={<h1>Location1</h1>} />
+                <Route path='/location/2' element={<h1>Location2</h1>} />
+                <Route path='/location/3' element={<h1>Location3</h1>} />
             </Routes>
         </div>
     );

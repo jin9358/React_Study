@@ -49,7 +49,7 @@ export const listContainer = css`
                     height: 15px;
                     background-color:#0b4f8f;
                 }
-            }     
+            }
         }
     }
 `;
@@ -61,16 +61,16 @@ export const todoTextContainer = (isOpen) => css`
     cursor: pointer;
     transition: all 0.2s ease-in-out;
     ${
-        isOpen ? 
+        isOpen ?
         `white-space: break-spaces;
         overflow-wrap: break-word;
         word-wrap: break-word;
-        text-overflow: ellipsis;`       // true일 경우
+        text-overflow: ellipsis;`
         :
         `white-space: nowrap;
-        text-overflow: ellipsis;        
-        overflow: hidden;`              // false일 경우
-    }  
+        text-overflow: ellipsis;
+        overflow: hidden;`
+    }
 `;
 
 export const hiddenTrashBox = css`
@@ -96,7 +96,7 @@ export const trashBox = css`
     align-items: center;
     width: 36px;
     height: 36px;
-    background-color: #ea0808;
+    background-color:#ea0808;
     color: #fff;
     cursor: pointer;
 `;

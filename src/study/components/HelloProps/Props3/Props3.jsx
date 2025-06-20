@@ -21,9 +21,7 @@ function fx1() {
 
     const objData1 = obj.data1;
 
-    const {data1} = objData1;
-    console.log(objData1);
-    console.log(objData1);
+    const {data1} = obj;
     console.log(objData1);
     console.log(objData1);
     console.log(objData1);
@@ -31,7 +29,7 @@ function fx1() {
     console.log(objData1);
     console.log(objData1);
 
-    function fx2(oData1, oData2, oData3, oData4) {
+    function fx2({oData1, oData2, oData3, oData4}) {
 
     }
 

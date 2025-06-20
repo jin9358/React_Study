@@ -21,7 +21,7 @@ export const layout = css`
         display: flex;
         gap: 10px;
         margin: 0;
-        padding: 0 10;
+        padding: 0 10px;
 
         & > li {
             display: flex;
@@ -37,7 +37,7 @@ export const layout = css`
                 display: flex;
                 justify-content: center;
                 align-items: center;
-                color: #555
+                color: #555;
             }
         }
     }

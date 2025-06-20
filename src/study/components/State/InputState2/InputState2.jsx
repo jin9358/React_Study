@@ -1,7 +1,7 @@
 import { useState } from "react";
 
 function InputState2() {
-    const[ inputValue, settInputValue] = useState({
+    const [ inputValue, setInputValue ] = useState({
         t1: "",
         t2: "",
         t3: "",
@@ -17,27 +17,24 @@ function InputState2() {
             [name]: value,
         }
 
-        settInputValue(newInputValue);
+        setInputValue(newInputValue);
 
         const addr = "address";
-        const address = "부산 남구"
-        // 키값은 대괄호 감싸서 , value 값은 그냥 변수 참조
+        const address = "부산 동래구";
 
         const obj = {
             name: "이진혁",
-            age: 28,
+            age: 32,
             ["address"]: address,
             address: "부산 부산진구",
         }
-        
-        // const obj2 = obj; // 얕은복사
 
-        const obj2 = {          // 깊은 복사
-           ...obj
-        }
+        const obj2 = {
+            ...obj,
+            address: "부산 북구"
+        }; 
     }
 
-    
     return <div>
         <input type="text" name="t1" value={inputValue.t1} onChange={handleOnChange}/>
         <input type="text" name="t2" value={inputValue.t2} onChange={handleOnChange}/>

@@ -6,25 +6,27 @@ function InputState3() {
         age: "",
         address: "",
     }
-    
-    const [ studentInputValue, setStudentInputValue ] = useState(studentInputValueEmpty); 
 
-    const handleOnChange = (e) => {
+    const [ studentInputValue, setStudentInputValue ] = useState(studentInputValueEmpty);
+
+    const handleOnChange = e => {
         const { name, value } = e.target;
+
         setStudentInputValue((prev) => {
-                return {
-                ...prev, [name]: value
-            };
+            return {
+                ...prev, 
+                [name]: value,
+            }
         });
     }
 
-    return<div>
+    return <div>
         <h1>{studentInputValue.name}</h1>
         <h1>{studentInputValue.age}</h1>
         <h1>{studentInputValue.address}</h1>
-        <input type="text" name="name" value={studentInputValue.name} onChange={handleOnChange}/>
-        <input type="text" name="age" value={studentInputValue.age} onChange={handleOnChange}/>
-        <input type="text" name="address" value={studentInputValue.address} onChange={handleOnChange}/>
+        <input type="text" name="name" value={studentInputValue.name} onChange={handleOnChange} />
+        <input type="text" name="age" value={studentInputValue.age} onChange={handleOnChange} />
+        <input type="text" name="address" value={studentInputValue.name} onChange={handleOnChange} />
 
         <button onClick={() => setStudentInputValue(studentInputValueEmpty)}>리셋</button>
     </div>

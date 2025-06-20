@@ -18,14 +18,14 @@ function Index(props) {
             setTodoList(JSON.parse(localStorageTodoList));
         }
         setLoad(true);
-    }, [])
-   
+    }, []);
+
     useEffect(() => {
         setSearchText("");
         if (isLoad) {
             let localStorageTodoList = localStorage.getItem("todoList");
-            const todoListJson = JSON.stringify(todoList)
-            if(localStorageTodoList !== todoListJson) {
+            const todoListJson = JSON.stringify(todoList);
+            if (localStorageTodoList !== todoListJson) {
                 localStorage.setItem("todoList", todoListJson);
             }
         }

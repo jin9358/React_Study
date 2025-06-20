@@ -9,4 +9,4 @@ export const layout = css`
     font-size: 20px;
     font-weight: 600;
     color: #f10400;
-`
+`   

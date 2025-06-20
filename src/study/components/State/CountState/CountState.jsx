@@ -16,17 +16,20 @@ function CountState() {
         const num = parseInt(e.target.value);
         console.log(typeof(num));
         // countState[0] += num;
-       setCount(count + num);
+        setCount(count + num);
     }
 
     return <div>
         <CountHeader count={count} />
-        <CountButton text={"+1"} value={1} onClick={handleOnClick}/>
-        <CountButton text={"-1"} value={-1} onClick={handleOnClick}/>
         
+        <CountButton text={"+1"} value={1} onClick={handleOnClick} />
+        <CountButton text={"-1"} value={-1} onClick={handleOnClick} />
+
         <button onClick={handleOnClick} value={1}>+1</button>
         <button onClick={handleOnClick} value={-1}>-1</button>
     </div>
 }
 
 export default CountState;
+
+

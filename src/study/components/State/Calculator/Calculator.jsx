@@ -10,26 +10,26 @@ function Calculator() {
         let minusNums = [];
         let lastCalc = "";
 
-        const plusIndex = input.indexOf("+");
-        const minusIndex = input.indexOf("-");
+        const plusIndex = inputText.indexOf("+");
+        const minusIndex = inputText.indexOf("-");
 
-        if (plusIndex == -1 && minusIndex == -1){
+        if (plusIndex === -1 && minusIndex === -1) {
             return;
         }
-
+        
         if (plusIndex < 0) {
             const numText = inputText.substring(0, minusIndex);
             const restNumText = inputText.substring(minusIndex + 1);
             console.log(numText);
-            console.log(restNumText);
-        } 
+            console.log(restNumText); 
+        }
 
         if (minusIndex < 0) {
             const numText = inputText.substring(0, plusIndex);
             const restNumText = inputText.substring(plusIndex + 1);
             console.log(numText);
-            console.log(restNumText);
-        } 
+            console.log(restNumText); 
+        }
 
         if (plusIndex < minusIndex) {
             const numText = inputText.substring(0, plusIndex);
@@ -38,15 +38,14 @@ function Calculator() {
             const numText = inputText.substring(0, minusIndex);
             const restNumText = inputText.substring(minusIndex + 1);
         }
-        console.log(plusIndex);
-        console.log(minusIndex);
+
     }
-    
+
     const handleOnClick = (e) => {
-        if(e.target.value == "=") {
-            getResult();
-            // setResult(eval(input));         // eval : 문자열 그대로 코드로 해석하고 실행
-            // setInput("0");
+        if(e.target.value === "=") {
+            // getResult();
+            setResult(eval(input));
+            setInput("0");
             return;
         }
         if(input === "0") {
@@ -59,26 +58,28 @@ function Calculator() {
     return <div>
         <h1>입력: {input}</h1>
         <h1>결과: {result}</h1>
-            <button>0</button>
         <div>
-            <button value={1} onClick={handleOnClick}>1</button>
-            <button value={2} onClick={handleOnClick}>2</button>
-            <button value={3} onClick={handleOnClick}>3</button>
+            <button onClick={handleOnClick} value={0}>0</button>
         </div>
         <div>
-            <button value={4} onClick={handleOnClick}>4</button>
-            <button value={5} onClick={handleOnClick}>5</button>
-            <button value={6} onClick={handleOnClick}>6</button>  
+            <button onClick={handleOnClick} value={1}>1</button>
+            <button onClick={handleOnClick} value={2}>2</button>
+            <button onClick={handleOnClick} value={3}>3</button>
         </div>
         <div>
-            <button value={7} onClick={handleOnClick}>7</button>
-            <button value={8} onClick={handleOnClick}>8</button>
-            <button value={9} onClick={handleOnClick}>9</button>
+            <button onClick={handleOnClick} value={4}>4</button>
+            <button onClick={handleOnClick} value={5}>5</button>
+            <button onClick={handleOnClick} value={6}>6</button>
         </div>
         <div>
-            <button value={"+"} onClick={handleOnClick}>+</button>
-            <button value={"-"} onClick={handleOnClick}>-</button>
-            <button value={"="} onClick={handleOnClick}>=</button>
+            <button onClick={handleOnClick} value={7}>7</button>
+            <button onClick={handleOnClick} value={8}>8</button>
+            <button onClick={handleOnClick} value={9}>9</button>
+        </div>
+        <div>
+            <button onClick={handleOnClick} value={"+"}>+</button>
+            <button onClick={handleOnClick} value={"-"}>-</button>
+            <button onClick={handleOnClick} value={"="}>=</button>
         </div>
     </div>
 }

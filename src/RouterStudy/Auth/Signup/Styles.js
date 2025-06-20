@@ -65,7 +65,7 @@ export const inputContainer = (status) => css`
         width: 35px;
         height: 100%;
 
-        &:nth-last-of-type(1) * {
+        & * {
             font-size: 20px;
             color: ${status === "success" ? "#38ba00" : "#f10400"};
         }
@@ -94,9 +94,9 @@ export const submitButton = css`
     color: #fff;
     font-weight: 600;
 
-    & :disabled {
+    &:disabled {
         background-color: #d5d5d5;
-        border: none;;
+        border: none;
         color: #fff;
         font-weight: 600;
         cursor: default;

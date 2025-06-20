@@ -22,7 +22,7 @@ function Component2() {
                 break;
             } 
             const [ key, value ] = next.value;
-
+            
             searchParamObj = {
                 ...searchParamObj,
                 [key]: value,
@@ -60,4 +60,3 @@ function Router4(props) {
 }
 
 export default Router4;
-// http://localhost:5173/param2?name=test&age=32&address=busan
